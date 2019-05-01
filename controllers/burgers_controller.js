@@ -7,20 +7,20 @@ router.get('/', function (req, res) {
 });
 
 router.get('/index', function (req, res) {
-  burger.selectAll(function(data) {
+  burger.selectAll(function (data) {
     var hbsObject = { burgers: data };
     res.render('index', hbsObject);
   });
 });
 
 router.post('/burger/create', function (req, res) {
-  burger.insertOne(req.body.burger_name, function() {
+  burger.insertOne(req.body.burger_name, function () {
     res.redirect('/index');
   });
 });
 
 router.post('/burger/eat/:id', function (req, res) {
-  burger.updateOne(req.params.id, function() {
+  burger.updateOne(req.params.id, function () {
     res.redirect('/index');
   });
 });
